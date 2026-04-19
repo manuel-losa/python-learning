@@ -1,19 +1,32 @@
-# Python dashboard
+# Python Financial Dashboard
 
-This is my first python project
+This is a simple python project that analyzes a user's financial situation based on:
 
-## Features
+- Age
+- Income
+- Savings
 
-- Analyze income
-- Analyze age
-- Analyze savings
+## 🚀 Features
 
-## Technologies
+- Analyze income level
+- Analyze age category
+- Analyze savings status
+- Full profile analysis
+
+## 🧠 What I learned
+
+- Python basics (if, functions, input)
+- Proyect structure (Main.py / logic.py)
+- Git and version control
+- Github workflow
+
+## 🛠️ Technologies
 
 - Python
 - Git
+- GitHub
 
-## How to run
+## ▶️ How to run
 
 ```bash
 python main.py
