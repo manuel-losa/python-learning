@@ -18,7 +18,7 @@ def increase_prices(prices, multiplier):
     for price in prices:
         new_prices.append(price * multiplier)
 
-        return new_prices
+    return new_prices
 
 def handle_prices():
     prices = [10, 20, 30]
