@@ -12,13 +12,30 @@ def get_number(prompt):
 def show_result(label, result):
     print(label, result)
 
+def increase_prices(prices, multiplier):
+    new_prices = []
+
+    for price in prices:
+        new_prices.append(price * multiplier)
+
+        return new_prices
+
+def handle_prices():
+    prices = [10, 20, 30]
+
+    multiplier = float(input("Multiplier 1.2, or 0.8:"))
+
+    result = increase_prices(prices, multiplier)
+
+    print("New prices:", result)
 
 
 options = [
     "1. Check income",
     "2. Check age",
     "3. Check savings",
-    "4. Exit"
+    "4. Exit",
+    "5. Calculate new prices"
 ]
 
 def handle_income():
@@ -36,7 +53,8 @@ def handle_savings():
 actions = {
     "1": handle_income,
     "2": handle_age,
-    "3": handle_savings
+    "3": handle_savings,
+    "5": handle_prices
 }
 
 def main ():
