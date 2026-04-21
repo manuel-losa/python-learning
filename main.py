@@ -12,6 +12,14 @@ def get_number(prompt):
 def show_result(label, result):
     print(label, result)
 
+def calculate_total(prices):
+    total = 0
+
+    for price in prices:
+        total += price
+
+    return total 
+
 def increase_prices(prices, multiplier):
     new_prices = []
 
@@ -21,13 +29,18 @@ def increase_prices(prices, multiplier):
     return new_prices
 
 def handle_prices():
-    prices = [10, 20, 30]
+    prices_input = input("Enter prices separated by commas: ")
+    prices = prices_input.split(",")
+    prices = [float(price.strip()) for price in prices]
 
     multiplier = float(input("Multiplier 1.2, or 0.8:"))
 
     result = increase_prices(prices, multiplier)
 
     print("New prices:", result)
+
+    total = calculate_total(prices)
+    print("Total:", total)
 
 
 options = [
