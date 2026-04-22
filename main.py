@@ -30,17 +30,35 @@ def increase_prices(prices, multiplier):
 
 def handle_prices():
     prices_input = input("Enter prices separated by commas: ")
+    
     prices = prices_input.split(",")
-    prices = [float(price.strip()) for price in prices]
 
-    multiplier = float(input("Multiplier 1.2, or 0.8:"))
+    try:
+        prices = [float(price.strip()) for price in prices]
+    except:
+        print("Invalid input, please enter numbers only")
+        return
+
+    try:
+        multiplier = float(input("Multiplier (e.g. 1.2 or 0.8): "))
+    except:
+        print("Invalid multiplier")
+        return
 
     result = increase_prices(prices, multiplier)
 
-    print("New prices:", result)
+    original_total = calculate_total(prices)
+    new_total = calculate_total(result)
 
-    total = calculate_total(prices)
-    print("Total:", total)
+    print("Original prices:", prices)
+    print("Original total:", original_total)
+
+    print("New prices:", result)
+    print("New total:", new_total)
+
+    print("You save:", original_total - new_total)
+
+    input("\nPress Enter to continue...")
 
 
 options = [
