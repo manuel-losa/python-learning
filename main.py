@@ -38,11 +38,23 @@ def handle_prices():
     except:
         print("Invalid input, please enter numbers only")
         return
+    
+    if len(prices) == 0:
+        print("No prices entered")
+        return
+    
+    for price in prices:
+        if price < 0:
+            print("Prices cannot be negative")
+            return
 
     try:
         multiplier = float(input("Multiplier (e.g. 1.2 or 0.8): "))
     except:
         print("Invalid multiplier")
+        
+    if multiplier <= 0:
+        print("Multiplier must be greater than 0")
         return
 
     result = increase_prices(prices, multiplier)
