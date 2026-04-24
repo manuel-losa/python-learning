@@ -24,7 +24,7 @@ def increase_prices(prices, multiplier):
     new_prices = []
 
     for price in prices:
-        new_prices.append(price * multiplier)
+        new_prices.append(round(price * multiplier, 2))
 
     return new_prices
 
@@ -34,7 +34,7 @@ def handle_prices():
     prices = prices_input.split(",")
 
     try:
-        prices = [float(price.strip()) for price in prices]
+        prices = [round(float(price.strip()), 2) for price in prices]
     except:
         print("Invalid input, please enter numbers only")
         return
@@ -63,12 +63,18 @@ def handle_prices():
     new_total = calculate_total(result)
 
     print("Original prices:", prices)
-    print("Original total:", original_total)
+    print("Original total: £", round(original_total, 2))
 
     print("New prices:", result)
-    print("New total:", new_total)
+    print("New total: £", round(new_total, 2) )
 
-    print("You save:", original_total - new_total)
+    difference = round(original_total - new_total, 2)
+
+    if difference > 0:
+        print("You save: £", difference)
+
+    else:
+        print("You spend more: £", abs(difference))
 
     input("\nPress Enter to continue...")
 
