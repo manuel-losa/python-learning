@@ -28,21 +28,28 @@ def increase_prices(prices, multiplier):
 
     return new_prices
 
-def handle_prices():
+def get_prices():
     prices_input = input("Enter prices separated by commas: ")
-    
     prices = prices_input.split(",")
 
     try:
         prices = [round(float(price.strip()), 2) for price in prices]
+        return prices
     except:
         print("Invalid input, please enter numbers only")
+        return None
+
+
+def handle_prices():
+    prices = get_prices()
+
+    if prices is None:
         return
-    
+
     if len(prices) == 0:
         print("No prices entered")
         return
-    
+
     for price in prices:
         if price < 0:
             print("Prices cannot be negative")
@@ -52,7 +59,8 @@ def handle_prices():
         multiplier = float(input("Multiplier (e.g. 1.2 or 0.8): "))
     except:
         print("Invalid multiplier")
-        
+        return
+
     if multiplier <= 0:
         print("Multiplier must be greater than 0")
         return
@@ -66,13 +74,12 @@ def handle_prices():
     print("Original total: £", round(original_total, 2))
 
     print("New prices:", result)
-    print("New total: £", round(new_total, 2) )
+    print("New total: £", round(new_total, 2))
 
     difference = round(original_total - new_total, 2)
 
     if difference > 0:
         print("You save: £", difference)
-
     else:
         print("You spend more: £", abs(difference))
 
@@ -106,7 +113,7 @@ actions = {
     "5": handle_prices
 }
 
-def main ():
+def main():
     while True:
         print("\n=== DASHBOARD ===")
         for option_text in options:
