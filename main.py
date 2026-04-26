@@ -38,7 +38,30 @@ def get_prices():
     except:
         print("Invalid input, please enter numbers only")
         return None
+    
+def get_multiplier():
+    try:
+        return float(input("Multiplier (e.g. 1.2 or 0.8): "))
+    except: 
+        print("Invalid multiplier")
+        return None 
+    
+def calculate_difference(original_total, new_total):
+    return round(original_total - new_total, 2)
 
+def display_results(prices, result, original_total, new_total):
+    print("Original prices:", prices)
+    print("Original total: £", round(original_total, 2))
+
+    print("New prices:", result)
+    print("New total: £", round(new_total, 2))
+
+    difference = calculate_difference(original_total, new_total)
+
+    if difference > 0:
+        print("You save: £", difference)
+    else:
+        print("You spend more: £", abs(difference))
 
 def handle_prices():
     prices = get_prices()
@@ -55,11 +78,10 @@ def handle_prices():
             print("Prices cannot be negative")
             return
 
-    try:
-        multiplier = float(input("Multiplier (e.g. 1.2 or 0.8): "))
-    except:
-        print("Invalid multiplier")
-        return
+    multiplier = get_multiplier()
+
+    if multiplier is None:
+        return 
 
     if multiplier <= 0:
         print("Multiplier must be greater than 0")
@@ -70,18 +92,7 @@ def handle_prices():
     original_total = calculate_total(prices)
     new_total = calculate_total(result)
 
-    print("Original prices:", prices)
-    print("Original total: £", round(original_total, 2))
-
-    print("New prices:", result)
-    print("New total: £", round(new_total, 2))
-
-    difference = round(original_total - new_total, 2)
-
-    if difference > 0:
-        print("You save: £", difference)
-    else:
-        print("You spend more: £", abs(difference))
+    display_results(prices, result, original_total, new_total)
 
     input("\nPress Enter to continue...")
 
