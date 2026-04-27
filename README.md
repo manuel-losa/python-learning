@@ -73,3 +73,11 @@ You save: £12.0
 ```bash
 python main.py
 ```
+
+👤 About Me
+
+I am currently learning python with a focus on building real-world applications.
+
+This project represent my progression from basic programing concepts to writing structured, modular and maintainable code.
+
+I am continuously improving my skill and aiming to become a junior developer.
