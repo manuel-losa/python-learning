@@ -1,0 +1,55 @@
+from logic import add_expense, get_total, show_expenses, delete_expense
+
+
+def main():
+    expenses = []
+
+    while True:
+        print("\n=== EXPENSE TRACKER ===")
+        print("1. Add expense")
+        print("2. Show expenses")
+        print("3. Show total")
+        print("4. Exit")
+        print("5. Delete expense")
+
+        option = input("Choose: ")
+
+        if option == "1":
+            name = input("Expense name: ")
+            try:
+                amount = float(input("Amount: "))
+            except: 
+                print("Invalid amount")
+                continue
+
+            add_expense(expenses, name, amount)
+
+        elif option == "2":
+            show_expenses(expenses)
+
+        elif option == "3":
+            total = get_total(expenses)
+            print(f"Total: £{total:.2f}")
+
+        elif option == "4":
+            print("Good bye")
+            break
+
+        elif option == "5":
+            show_expenses(expenses)
+
+            try:
+                index = int(input("Enter index to delete: "))
+
+            except:
+                print("Invalid number")
+                continue
+
+            delete_expense(expenses, index)
+
+        else:
+            print("Invalid option")
+        
+
+if __name__ == "__main__":
+    main()
