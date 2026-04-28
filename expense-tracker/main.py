@@ -1,8 +1,8 @@
-from logic import add_expense, get_total, show_expenses, delete_expense
+from logic import add_expense, get_total, show_expenses, delete_expense, save_expenses, load_expenses
 
 
 def main():
-    expenses = []
+    expenses = load_expenses()
 
     while True:
         print("\n=== EXPENSE TRACKER ===")
@@ -22,7 +22,10 @@ def main():
                 print("Invalid amount")
                 continue
 
-            add_expense(expenses, name, amount)
+            category = input("Category: ")
+
+            add_expense(expenses, name, amount, category)
+            save_expenses(expenses)
 
         elif option == "2":
             show_expenses(expenses)
@@ -46,6 +49,7 @@ def main():
                 continue
 
             delete_expense(expenses, index)
+            save_expenses(expenses)
 
         else:
             print("Invalid option")
