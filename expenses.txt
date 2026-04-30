@@ -1,2 +1,2 @@
-pen, 4.0
-car, 4.0
+cat, 4.0, animals
+dog, 3.0, animals

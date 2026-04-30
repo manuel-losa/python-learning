@@ -1,4 +1,4 @@
-from logic import add_expense, get_total, show_expenses, delete_expense, save_expenses, load_expenses
+from logic import add_expense, get_total, show_expenses, delete_expense, save_expenses, load_expenses, show_totals_by_category
 
 
 def main():
@@ -11,6 +11,7 @@ def main():
         print("3. Show total")
         print("4. Exit")
         print("5. Delete expense")
+        print("6. Show totals by category")
 
         option = input("Choose: ")
 
@@ -50,6 +51,9 @@ def main():
 
             delete_expense(expenses, index)
             save_expenses(expenses)
+
+        elif option == "6":
+            show_totals_by_category(expenses)
 
         else:
             print("Invalid option")
