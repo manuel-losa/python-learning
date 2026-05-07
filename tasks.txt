@@ -1,0 +1,2 @@
+go eat,False
+go shower,True
