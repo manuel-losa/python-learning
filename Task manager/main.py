@@ -1,4 +1,4 @@
-from logic import add_task, show_tasks, complete_task, delete_task, save_tasks, load_tasks
+from logic import add_task, show_tasks, complete_task, delete_task, save_tasks, load_tasks, show_pending_tasks, show_completed_tasks 
 
 
 def main():
@@ -11,6 +11,8 @@ def main():
         print("3. Complete task")
         print("4. Delete task")
         print("5. Exit")
+        print("6. Show pending tasks")
+        print("7. Show completed tasks")
 
         option = input("Choose: ")
 
@@ -50,6 +52,12 @@ def main():
         elif option == "5":
             print("Goodbye")
             break
+
+        elif option == "6":
+            show_pending_tasks(tasks)
+
+        elif option == "7":
+            show_completed_tasks(tasks)
 
         else:
             print("Invalid option")
