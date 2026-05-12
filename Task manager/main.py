@@ -1,4 +1,4 @@
-from logic import add_task, show_tasks, complete_task, delete_task, save_tasks, load_tasks, show_pending_tasks, show_completed_tasks 
+from logic import add_task, show_tasks, complete_task, delete_task, save_tasks, load_tasks, show_pending_tasks, show_completed_tasks, get_pending_tasks, get_completed_tasks 
 
 
 def main():
@@ -54,10 +54,12 @@ def main():
             break
 
         elif option == "6":
-            show_pending_tasks(tasks)
+            pending_tasks = get_pending_tasks(tasks)
+            show_tasks(pending_tasks)
 
         elif option == "7":
-            show_completed_tasks(tasks)
+            completed_tasks = get_completed_tasks(tasks)
+            show_tasks(completed_tasks)
 
         else:
             print("Invalid option")

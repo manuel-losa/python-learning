@@ -42,28 +42,25 @@ def save_tasks(tasks):
             line = f"{task['title']},{task['done']}\n"
             file.write(line)
 
-def show_pending_tasks(tasks):
-    found = False
 
-    for i, task in enumerate(tasks):
-        if task["done"] == False:
-            print(f"{i} - {task['title']} [Pending]")
-            found = True
+def get_pending_tasks(tasks):
+        pending_tasks = []
 
-        if found == False:
-            print("No pending tasks")
+        for task in tasks:
+            if task["done"] == False:
+                pending_tasks.append(task)
 
+        return pending_tasks
+    
 
-def show_completed_tasks(tasks):
-    found = False
+def get_completed_tasks(tasks):
+        completed_tasks = []
 
-    for i, task in enumerate(tasks):
-        if task["done"] == True:
-            print(f"{i} - {task['title']} [Done]")
-            found = True
+        for task in tasks:
+            if task["done"] == True:
+                completed_tasks.append(task)
 
-    if found == False:
-        print("No completed tasks")
+        return completed_tasks            
 
 
 def load_tasks():
