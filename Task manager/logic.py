@@ -36,31 +36,21 @@ def delete_task(tasks, index):
     return tasks
 
 
+def get_tasks_by_status(tasks, status):
+    filtered_tasks = []
+
+    for task in tasks:
+        if task["done"] == status:
+            filtered_tasks.append(task)
+
+    return filtered_tasks
+
+
 def save_tasks(tasks):
     with open("tasks.txt", "w") as file:
         for task in tasks:
             line = f"{task['title']},{task['done']}\n"
             file.write(line)
-
-
-def get_pending_tasks(tasks):
-        pending_tasks = []
-
-        for task in tasks:
-            if task["done"] == False:
-                pending_tasks.append(task)
-
-        return pending_tasks
-    
-
-def get_completed_tasks(tasks):
-        completed_tasks = []
-
-        for task in tasks:
-            if task["done"] == True:
-                completed_tasks.append(task)
-
-        return completed_tasks            
 
 
 def load_tasks():
