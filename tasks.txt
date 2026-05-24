@@ -1,3 +1,0 @@
-go shower,True
-go gym,False
-go eat,True
