@@ -1,3 +1,5 @@
+import json
+
 def add_task(tasks, title):
     task = {
         "title": title,
@@ -47,24 +49,15 @@ def get_tasks_by_status(tasks, status):
 
 
 def save_tasks(tasks):
-    with open("tasks.txt", "w") as file:
-        for task in tasks:
-            line = f"{task['title']},{task['done']}\n"
-            file.write(line)
-
+    with open("tasks.json", "w") as file:
+        json.dump(tasks, file)
 
 def load_tasks():
-    tasks = []
-
     try:
-        with open("tasks.txt", "r") as file:
-            for line in file:
-                title, done = line.strip().split(",")
-                tasks.append({
-                    "title": title,
-                    "done": done == "True"
-                })
-    except:
-        pass
+        with open("tasks.json", "r") as file:
+            tasks = json.load(file)
 
-    return tasks
+        return tasks
+    
+    except:
+        return[]
