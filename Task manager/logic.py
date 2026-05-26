@@ -48,6 +48,16 @@ def get_tasks_by_status(tasks, status):
     return filtered_tasks
 
 
+def search_tasks(tasks, search):
+    matched_tasks = []
+
+    for task in tasks:
+        if search in task["title"]:
+            matched_tasks.append(task)
+
+    return matched_tasks
+
+
 def save_tasks(tasks):
     with open("tasks.json", "w") as file:
         json.dump(tasks, file)
