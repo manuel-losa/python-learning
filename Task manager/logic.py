@@ -58,6 +58,15 @@ def search_tasks(tasks, search):
     return matched_tasks
 
 
+def edit_task(tasks, index, new_title):
+    if index < 0 or index >= len(tasks):
+        print("Invalid index")
+        return tasks
+    
+    tasks[index]["title"] = new_title
+    return tasks
+
+
 def save_tasks(tasks):
     with open("tasks.json", "w") as file:
         json.dump(tasks, file)

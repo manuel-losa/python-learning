@@ -1,4 +1,4 @@
-from logic import add_task, show_tasks, complete_task, delete_task, save_tasks, load_tasks,  get_tasks_by_status, search_tasks 
+from logic import add_task, show_tasks, complete_task, delete_task, save_tasks, load_tasks,  get_tasks_by_status, search_tasks, edit_task 
 
 
 def main():
@@ -14,6 +14,7 @@ def main():
         print("6. Show pending tasks")
         print("7. Show completed tasks")
         print("8. Search")
+        print("9. Edit task")
 
         option = input("Choose: ")
 
@@ -68,6 +69,16 @@ def main():
             matches_tasks = search_tasks(tasks, search)
 
             show_tasks(matches_tasks)
+
+        elif option == "9":
+            show_tasks(tasks)
+
+            index = int(input("Enter task index: "))
+            new_title = input("New title: ")
+
+            edit_task(tasks, index, new_title)
+
+            save_tasks(tasks)
 
         else:
             print("Invalid option")
