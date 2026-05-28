@@ -1,12 +1,19 @@
 import json
 
-def add_task(tasks, title):
+def add_task(tasks, title, priority):
+    
+    if priority not in ["High", "Medium", "Low"]:
+        print("Invalid priority")
+        return 
+    
     task = {
         "title": title,
-        "done": False
+        "done": False,
+        "priority": priority
     }
 
     tasks.append(task)
+
     return tasks
 
 
@@ -17,7 +24,7 @@ def show_tasks(tasks):
 
     for i, task in enumerate(tasks):
         status = "Done" if task["done"] else "Pending"
-        print(f"{i} - {task['title']} [{status}]")
+        print(f"{i} - {task['title']} [{status}] [{task['priority']}]")
 
 
 def complete_task(tasks, index):

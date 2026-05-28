@@ -20,8 +20,9 @@ def main():
 
         if option == "1":
             title = input("Task title: ")
+            priority = input("Priority: ")
 
-            add_task(tasks, title)
+            add_task(tasks, title, priority)
             save_tasks(tasks)
 
         elif option == "2":
