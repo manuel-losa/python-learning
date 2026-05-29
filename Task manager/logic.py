@@ -74,6 +74,22 @@ def edit_task(tasks, index, new_title):
     return tasks
 
 
+def get_stats(tasks):
+
+    completed = 0
+    pending = 0 
+
+    for task in tasks:
+
+        if task["done"]:
+            completed += 1
+
+        else:
+            pending += 1
+
+    return completed, pending
+
+
 def save_tasks(tasks):
     with open("tasks.json", "w") as file:
         json.dump(tasks, file)
