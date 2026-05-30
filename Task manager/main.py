@@ -1,4 +1,4 @@
-from logic import add_task, show_tasks, complete_task, delete_task, save_tasks, load_tasks,  get_tasks_by_status, search_tasks, edit_task, get_stats 
+from logic import add_task, show_tasks, complete_task, delete_task, save_tasks, load_tasks,  get_tasks_by_status, search_tasks, edit_task, get_stats, sort_tasks_by_priority
 
 
 def main():
@@ -16,6 +16,7 @@ def main():
         print("8. Search")
         print("9. Edit task")
         print("10. Get stats")
+        print("11. Sort by priority")
 
         option = input("Choose: ")
 
@@ -92,6 +93,10 @@ def main():
             print(f"Total tasks: {len(tasks)}")
             print(f"Completed: {completed}")
             print(f"Pending: {pending}")
+
+        elif option == "11":
+            sorted_tasks = sort_tasks_by_priority(tasks)
+            show_tasks(sorted_tasks)
 
         else:
             print("Invalid option")

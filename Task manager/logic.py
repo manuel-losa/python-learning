@@ -89,10 +89,25 @@ def get_stats(tasks):
 
     return completed, pending
 
+def sort_tasks_by_priority(tasks):
+    priority_order = {
+        "High" : 1,
+        "Medium" : 2,
+        "Low" : 3
+    }
+    
+    sorted_tasks = sorted(
+        tasks,
+        key=lambda task: priority_order[task["priority"]]
+    )
+
+    return sorted_tasks
+
 
 def save_tasks(tasks):
     with open("tasks.json", "w") as file:
         json.dump(tasks, file)
+
 
 def load_tasks():
     try:
