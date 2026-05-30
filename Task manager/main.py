@@ -95,8 +95,9 @@ def main():
             print(f"Pending: {pending}")
 
         elif option == "11":
-            sorted_tasks = sort_tasks_by_priority(tasks)
-            show_tasks(sorted_tasks)
+            tasks = sort_tasks_by_priority(tasks)
+            save_tasks(tasks)
+            show_tasks(tasks)
 
         else:
             print("Invalid option")
