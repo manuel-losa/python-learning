@@ -1,4 +1,4 @@
-from logic import add_task, show_tasks, complete_task, delete_task, save_tasks, load_tasks,  get_tasks_by_status, search_tasks, edit_task, get_stats, sort_tasks_by_priority
+from logic import add_task, show_tasks, complete_task, delete_task, save_tasks, load_tasks,  get_tasks_by_status, search_tasks, edit_task, get_stats, sort_tasks_by_priority, edit_due_date
 
 
 def main():
@@ -17,14 +17,16 @@ def main():
         print("9. Edit task")
         print("10. Get stats")
         print("11. Sort by priority")
+        print("12. Edit due date")
 
         option = input("Choose: ")
 
         if option == "1":
             title = input("Task title: ")
             priority = input("Priority: ")
+            due_date = input("Due_date")
 
-            add_task(tasks, title, priority)
+            add_task(tasks, title, priority, due_date)
             save_tasks(tasks)
 
         elif option == "2":
@@ -98,6 +100,15 @@ def main():
             tasks = sort_tasks_by_priority(tasks)
             save_tasks(tasks)
             show_tasks(tasks)
+
+        elif option == "12":
+            show_tasks(tasks)
+
+            index = int(input("Enter tasks index: "))
+            new_due_date = input("New due date: ")
+
+            edit_due_date(tasks, index, new_due_date)
+            save_tasks(tasks)
 
         else:
             print("Invalid option")

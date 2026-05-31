@@ -1,6 +1,6 @@
 import json
 
-def add_task(tasks, title, priority):
+def add_task(tasks, title, priority, due_date):
     
     if priority not in ["High", "Medium", "Low"]:
         print("Invalid priority")
@@ -9,7 +9,8 @@ def add_task(tasks, title, priority):
     task = {
         "title": title,
         "done": False,
-        "priority": priority
+        "priority": priority,
+        "due_date": due_date
     }
 
     tasks.append(task)
@@ -24,7 +25,7 @@ def show_tasks(tasks):
 
     for i, task in enumerate(tasks):
         status = "Done" if task["done"] else "Pending"
-        print(f"{i} - {task['title']} [{status}] [{task['priority']}]")
+        print(f"{i} - {task['title']} [{status}] [{task['priority']}] [Due: {task['due_date']}]")
 
 
 def complete_task(tasks, index):
@@ -74,6 +75,15 @@ def edit_task(tasks, index, new_title):
     return tasks
 
 
+def edit_due_date(tasks, index, new_due_date):
+    if index < 0 or index >= len(tasks):
+        print("Invalid index")
+        return tasks
+    
+    tasks[index]["due_date"] = new_due_date
+    return tasks
+
+
 def get_stats(tasks):
 
     completed = 0
@@ -95,7 +105,7 @@ def sort_tasks_by_priority(tasks):
         "Medium" : 2,
         "Low" : 3
     }
-    
+
     sorted_tasks = sorted(
         tasks,
         key=lambda task: priority_order[task["priority"]]
