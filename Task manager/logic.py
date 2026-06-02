@@ -56,6 +56,17 @@ def get_tasks_by_status(tasks, status):
     return filtered_tasks
 
 
+def get_tasks_by_priority(tasks, priority):
+    priority_tasks = []
+
+    for task in tasks:
+        if task["priority"] == priority: 
+            priority_tasks.append(task)
+
+    return priority_tasks
+
+
+
 def search_tasks(tasks, search):
     matched_tasks = []
 

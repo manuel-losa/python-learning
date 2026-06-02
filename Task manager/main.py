@@ -1,4 +1,4 @@
-from logic import add_task, show_tasks, complete_task, delete_task, save_tasks, load_tasks,  get_tasks_by_status, search_tasks, edit_task, get_stats, sort_tasks_by_priority, edit_due_date
+from logic import add_task, show_tasks, complete_task, delete_task, save_tasks, load_tasks,  get_tasks_by_status, search_tasks, edit_task, get_stats, sort_tasks_by_priority, edit_due_date, get_tasks_by_priority
 
 
 def main():
@@ -18,6 +18,7 @@ def main():
         print("10. Get stats")
         print("11. Sort by priority")
         print("12. Edit due date")
+        print("13 Show Tasks By Priority")
 
         option = input("Choose: ")
 
@@ -109,6 +110,12 @@ def main():
 
             edit_due_date(tasks, index, new_due_date)
             save_tasks(tasks)
+
+        elif option == "13":
+            priority = input("Enter priority (High, Medium, Low): ")
+
+            priority_tasks = get_tasks_by_priority(tasks, priority)
+            show_tasks(priority_tasks)
 
         else:
             print("Invalid option")
