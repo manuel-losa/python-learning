@@ -19,6 +19,7 @@ def main():
         print("11. Sort by priority")
         print("12. Edit due date")
         print("13 Show Tasks By Priority")
+        print("14 Filter Task By status")
 
         option = input("Choose: ")
 
@@ -116,6 +117,20 @@ def main():
 
             priority_tasks = get_tasks_by_priority(tasks, priority)
             show_tasks(priority_tasks)
+
+        elif option == "14":        
+            status = input("Enter status (completed/pending): ").lower()
+
+            if status == "completed":
+                target_status = True
+            if status == "pending":
+                targer_status = False
+            else:
+                print("Invalid Status")
+                return
+
+            filtered_task = get_tasks_by_status(tasks, target_status)
+            show_tasks(filtered_tasks)
 
         else:
             print("Invalid option")
