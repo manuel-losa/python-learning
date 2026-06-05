@@ -1,4 +1,4 @@
-from logic import add_task, show_tasks, complete_task, delete_task, save_tasks, load_tasks,  get_tasks_by_status, search_tasks, edit_task, get_stats, sort_tasks_by_priority, edit_due_date, get_tasks_by_priority
+from logic import add_task, show_tasks, complete_task, delete_task, save_tasks, load_tasks,  get_tasks_by_status, search_tasks, edit_task, get_stats, sort_tasks_by_priority, edit_due_date, get_tasks_by_priority, get_overdue_tasks
 
 
 def main():
@@ -20,6 +20,7 @@ def main():
         print("12. Edit due date")
         print("13 Show Tasks By Priority")
         print("14 Filter Task By status")
+        print("15 Show overdue tasks")
 
         option = input("Choose: ")
 
@@ -131,6 +132,10 @@ def main():
 
             filtered_task = get_tasks_by_status(tasks, target_status)
             show_tasks(filtered_tasks)
+
+        elif option == "15":
+            overdue_tasks = get_overdue_tasks(tasks)
+            show_tasks(overdue_tasks)
 
         else:
             print("Invalid option")

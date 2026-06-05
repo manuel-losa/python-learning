@@ -1,4 +1,5 @@
 import json
+from datetime import date
 
 def add_task(tasks, title, priority, due_date):
     
@@ -64,6 +65,21 @@ def get_tasks_by_priority(tasks, priority):
             priority_tasks.append(task)
 
     return priority_tasks
+
+
+def get_overdue_tasks(tasks):
+
+    overdue_tasks = []
+
+    today = str(date.today())
+
+    for task in tasks:
+
+        if task["due_date"] <= today and task["done"] == False:
+
+            overdue_tasks.append(task)
+
+    return overdue_tasks
 
 
 
