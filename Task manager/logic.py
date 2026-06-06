@@ -71,17 +71,25 @@ def get_overdue_tasks(tasks):
 
     overdue_tasks = []
 
-    today = str(date.today())
+    today = date.today()
 
     for task in tasks:
 
-        if task["due_date"] <= today and task["done"] == False:
+        due_date = task["due_date"]
+
+        parts = due_date.split("-")
+
+        year = int(parts[0])
+        month = int(parts[1])
+        day = int(parts[2])
+
+        due_date = date(year, month, day)
+
+        if due_date <= today and task["done"] == False:
 
             overdue_tasks.append(task)
 
     return overdue_tasks
-
-
 
 def search_tasks(tasks, search):
     matched_tasks = []
