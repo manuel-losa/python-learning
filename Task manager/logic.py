@@ -26,7 +26,9 @@ def show_tasks(tasks):
 
     for i, task in enumerate(tasks):
         status = "Done" if task["done"] else "Pending"
-        print(f"{i} - {task['title']} [{status}] [{task['priority']}] [Due: {task['due_date']}]")
+        due_status = get_due_status(task)
+
+        print(f"{i} - {task['title']} [{status}] [{task['priority']}] [Due: {task['due_date']}] [{due_status}]")
 
 
 def complete_task(tasks, index):
@@ -90,6 +92,30 @@ def get_overdue_tasks(tasks):
             overdue_tasks.append(task)
 
     return overdue_tasks
+
+def get_due_status(task):
+    due_date = task["due_date"]
+
+    parts = due_date.split("-")
+
+    year = int(parts[0])
+    month = int(parts[1])
+    day = int(parts[2])
+
+    due_date = date(year, month, day)
+
+    today = date.today()
+
+    difference = due_date - today
+
+    days = difference.days
+
+    if days < 0:
+        return f"{abs(days)} days overdue"
+    elif days == 0:
+        return "Due today"
+    else:
+        return f"{days} days remaining"
 
 def search_tasks(tasks, search):
     matched_tasks = []
