@@ -77,15 +77,7 @@ def get_overdue_tasks(tasks):
 
     for task in tasks:
 
-        due_date = task["due_date"]
-
-        parts = due_date.split("-")
-
-        year = int(parts[0])
-        month = int(parts[1])
-        day = int(parts[2])
-
-        due_date = date(year, month, day)
+        due_date = string_to_date(task["due_date"])
 
         if due_date <= today and task["done"] == False:
 
@@ -94,15 +86,8 @@ def get_overdue_tasks(tasks):
     return overdue_tasks
 
 def get_due_status(task):
-    due_date = task["due_date"]
 
-    parts = due_date.split("-")
-
-    year = int(parts[0])
-    month = int(parts[1])
-    day = int(parts[2])
-
-    due_date = date(year, month, day)
+    due_date = string_to_date(task["due_date"])
 
     today = date.today()
 
@@ -189,3 +174,14 @@ def load_tasks():
     
     except:
         return[]
+    
+
+def string_to_date(date_string):
+
+    parts = date_string.split("-")
+
+    year = int(parts[0])
+    month = int(parts[1])
+    day = int(parts[2])
+
+    return date(year, month, day)
