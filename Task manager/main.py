@@ -27,10 +27,16 @@ def main():
         if option == "1":
             title = input("Task title: ")
             priority = input("Priority: ")
-            due_date = input("Due_date")
+            due_date = input("Due_date: ")
 
-            add_task(tasks, title, priority, due_date)
-            save_tasks(tasks)
+            try:
+                due_date = string_to_date(due_date)
+
+                add_task(tasks, title, priority, due_date)
+                save_tasks(tasks)
+
+            except:
+                print("invalid")
 
         elif option == "2":
             show_tasks(tasks)
