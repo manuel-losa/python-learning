@@ -1,4 +1,4 @@
-from logic import add_task, show_tasks, complete_task, delete_task, save_tasks, load_tasks,  get_tasks_by_status, search_tasks, edit_task, get_stats, sort_tasks_by_priority, edit_due_date, get_tasks_by_priority, get_overdue_tasks
+from logic import add_task, show_tasks, complete_task, delete_task, save_tasks, load_tasks,  get_tasks_by_status, search_tasks, edit_task, get_stats, sort_tasks_by_priority, edit_due_date, get_tasks_by_priority, get_overdue_tasks, string_to_date
 
 
 def main():
@@ -27,16 +27,18 @@ def main():
         if option == "1":
             title = input("Task title: ")
             priority = input("Priority: ")
+            priority = priority.title()
+
             due_date = input("Due_date: ")
 
             try:
-                due_date = string_to_date(due_date)
+                string_to_date(due_date)
 
                 add_task(tasks, title, priority, due_date)
                 save_tasks(tasks)
 
             except:
-                print("invalid")
+                print("invalid date. Use YYYY-MM-DD")
 
         elif option == "2":
             show_tasks(tasks)
