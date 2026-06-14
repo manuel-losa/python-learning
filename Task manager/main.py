@@ -18,8 +18,8 @@ def main():
         print("10. Get stats")
         print("11. Sort by priority")
         print("12. Edit due date")
-        print("13 Show Tasks By Priority")
-        print("14 Filter Task By status")
+        print("13 Show tasks by Priority")
+        print("14 Filter task by status")
         print("15 Show overdue tasks")
 
         option = input("Choose: ")
@@ -27,6 +27,7 @@ def main():
         if option == "1":
             title = input("Task title: ")
             priority = input("Priority: ")
+            priority = priority.strip()
             priority = priority.title()
 
             due_date = input("Due_date: ")
