@@ -4,6 +4,8 @@ from logic import add_task, show_tasks, complete_task, delete_task, save_tasks, 
 def main():
     tasks = load_tasks()
 
+    valid_options = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15"]
+
     while True:
         print("\n=== TASK MANAGER ===")
         print("1. Add task")
@@ -23,6 +25,12 @@ def main():
         print("15 Show overdue tasks")
 
         option = input("Choose: ")
+        option = option.strip()
+
+
+        if option not in valid_options:
+            print("Invalid option")
+            continue
 
         if option == "1":
             title = input("Task title: ")
