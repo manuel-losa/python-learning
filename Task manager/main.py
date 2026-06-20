@@ -141,13 +141,13 @@ def main():
 
             if status == "completed":
                 target_status = True
-            if status == "pending":
-                targer_status = False
+            elif status == "pending":
+                target_status = False
             else:
                 print("Invalid Status")
-                return
+                continue
 
-            filtered_task = get_tasks_by_status(tasks, target_status)
+            filtered_tasks = get_tasks_by_status(tasks, target_status)
             show_tasks(filtered_tasks)
 
         elif option == "15":
