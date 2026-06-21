@@ -127,6 +127,18 @@ def main():
             index = int(input("Enter tasks index: "))
             new_due_date = input("New due date: ")
 
+            try:
+                string_to_date(new_due_date)
+            except: 
+                print("Invalid date")
+                continue
+
+            try:
+                index = int(input("Index: "))
+            except:
+                print("Invalid index")
+                continue
+
             edit_due_date(tasks, index, new_due_date)
             save_tasks(tasks)
 
