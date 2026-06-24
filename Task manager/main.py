@@ -124,7 +124,6 @@ def main():
         elif option == "12":
             show_tasks(tasks)
 
-            index = int(input("Enter tasks index: "))
             new_due_date = input("New due date: ")
 
             try:
@@ -134,7 +133,10 @@ def main():
                 continue
 
             try:
-                index = int(input("Index: "))
+                index = int(input("Enter task index: "))
+                if not 0 <= index < len(tasks):
+                    print("Invalid index")
+                    continue
             except:
                 print("Invalid index")
                 continue
