@@ -122,15 +122,11 @@ def main():
             show_tasks(tasks)
 
         elif option == "12":
+            if not tasks:
+                   print("No task available")
+                   continue
+            
             show_tasks(tasks)
-
-            new_due_date = input("New due date: ")
-
-            try:
-                string_to_date(new_due_date)
-            except: 
-                print("Invalid date")
-                continue
 
             try:
                 index = int(input("Enter task index: "))
@@ -141,6 +137,15 @@ def main():
                 print("Invalid index")
                 continue
 
+            new_due_date = input("New due date: ")
+
+            try:
+                string_to_date(new_due_date)
+            except: 
+                print("Invalid date")
+                continue
+
+            
             edit_due_date(tasks, index, new_due_date)
             save_tasks(tasks)
 
