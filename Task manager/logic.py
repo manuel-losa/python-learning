@@ -106,7 +106,7 @@ def search_tasks(tasks, search):
     matched_tasks = []
 
     for task in tasks:
-        if search in task["title"]:
+        if search.lower() in task["title"].lower():
             matched_tasks.append(task)
 
     return matched_tasks
